@@ -15,7 +15,7 @@ func (app *App) InitDB() {
 
 	var err error
 
-	app.DB, err = gorm.Open(sqlite.Open("db/api.db"), &gorm.Config{
+	app.DB, err = gorm.Open(sqlite.Open(app.C.DBFile), &gorm.Config{
 		Logger: logger,
 	})
 

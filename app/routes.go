@@ -10,6 +10,9 @@ import (
 
 func (app *App) initRoutes() {
 
+	// controllers
+	article := controllers.Article{}
+
 	// api prefix
 	apiv1 := app.Router.Group("/api/v1")
 
@@ -26,4 +29,9 @@ func (app *App) initRoutes() {
 	url := ginSwagger.URL(swagger_ip) // The url pointing to API definition
 	app.Router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 
+	apiv1.GET("/article/:id", article.Get)
+	apiv1.GET("/articles", article.List)
+	apiv1.POST("/article", article.Create)
+	apiv1.PUT("/article/:id", article.Update)
+	apiv1.DELETE("/article/:id", article.Delete)
 }

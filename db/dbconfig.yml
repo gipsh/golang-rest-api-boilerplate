@@ -1,0 +1,15 @@
+development:
+  dialect: sqlite3
+  datasource: db/api.db
+  dir: db/migrations
+
+production:
+  dialect: postgres
+  host: ${APP_DB_HOST}
+  pool: 5
+  schema: public
+  datasource: dbname=api sslmode=disable user=${APP_DB_USERNAME} password=${APP_DB_PASSWORD}
+  dir: db/migrations
+
+
+
