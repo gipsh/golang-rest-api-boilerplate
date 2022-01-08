@@ -1,4 +1,182 @@
+basePath: /api/v1
+definitions:
+  controllers.CreateArticleInput:
+    properties:
+      body:
+        type: string
+      title:
+        type: string
+    required:
+    - title
+    type: object
+  controllers.JSONResult:
+    properties:
+      data: {}
+    type: object
+  models.Article:
+    properties:
+      body:
+        type: string
+      created_at:
+        type: string
+      deleted_at:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+      updated_at:
+        type: string
+    type: object
 info:
-  contact: {}
-paths: {}
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: Articles API server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Articles API
+  version: "1.0"
+paths:
+  /api/v1/article:
+    post:
+      consumes:
+      - application/json
+      description: Crete a new Article based on json data
+      parameters:
+      - description: Article
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.CreateArticleInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: desc
+          schema:
+            allOf:
+            - $ref: '#/definitions/controllers.JSONResult'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Article'
+              type: object
+      summary: Create a new Article
+      tags:
+      - Article
+  /api/v1/article/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Removes a Article from DB
+      parameters:
+      - description: ArticleID
+        in: path
+        name: some_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: desc
+          schema:
+            allOf:
+            - $ref: '#/definitions/controllers.JSONResult'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: Deletes a Article
+      tags:
+      - Article
+    get:
+      consumes:
+      - application/json
+      description: get Article by ID
+      parameters:
+      - description: Article ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: desc
+          schema:
+            allOf:
+            - $ref: '#/definitions/controllers.JSONResult'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Article'
+              type: object
+      summary: Show an Article
+      tags:
+      - Article
+    put:
+      consumes:
+      - application/json
+      description: updates a Article by id
+      parameters:
+      - description: ArticleID
+        in: path
+        name: some_id
+        required: true
+        type: integer
+      - description: Article
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.CreateArticleInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: desc
+          schema:
+            allOf:
+            - $ref: '#/definitions/controllers.JSONResult'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Article'
+              type: object
+      summary: Update a Article
+      tags:
+      - Article
+  /api/v1/articles:
+    get:
+      consumes:
+      - application/json
+      description: Lists all Articles
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: desc
+          schema:
+            allOf:
+            - $ref: '#/definitions/controllers.JSONResult'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/models.Article'
+                  type: array
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Lists all Articles
+      tags:
+      - Article
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

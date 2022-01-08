@@ -9,3 +9,5 @@ a simple boilerplate for building rest apis in go
 - SQL-Migrate for DB migrations
 - Swaggo for generating API docs  
 - Pagination
+- Dockerized 
+- github action ready to deploy to AWS ECS 

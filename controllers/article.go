@@ -17,15 +17,14 @@ type CreateArticleInput struct {
 	Body  string `json:"body"`
 }
 
-// @Summary Create a new Article
-// @Description Crete a new Article based on json data
-// @Accept  json
-// @Produce  json
-// @Tags Article
-// @Param message body controllers.CreateArticleInput true "Article"
-// @Header 200 {string} Token "qwerty"
-// @success 200 {object} controllers.JSONResult{data=models.Article} "desc"
-// @Router /api/v1/article [post]
+// @Summary      Create a new Article
+// @Description  Crete a new Article based on json data
+// @Accept       json
+// @Produce      json
+// @Tags         Article
+// @Param        message  body      controllers.CreateArticleInput               true  "Article"
+// @success      200      {object}  controllers.JSONResult{data=models.Article}  "desc"
+// @Router       /api/v1/article [post]
 func (controller *Article) Create(c *gin.Context) {
 
 	var input CreateArticleInput
@@ -48,15 +47,14 @@ func (controller *Article) Create(c *gin.Context) {
 
 }
 
-// @Summary Show an Article
-// @Description get Article by ID
-// @Accept  json
-// @Produce  json
-// @Tags Article
-// @Param id path int true "Article ID"
-// @success 200 {object} controllers.JSONResult{data=models.Article} "desc"
-// @Header 200 {string} Token "qwerty"
-// @Router /api/v1/article/{id} [get]
+// @Summary      Show an Article
+// @Description  get Article by ID
+// @Accept       json
+// @Produce      json
+// @Tags         Article
+// @Param        id   path      int                                          true  "Article ID"
+// @success      200  {object}  controllers.JSONResult{data=models.Article}  "desc"
+// @Router       /api/v1/article/{id} [get]
 func (controller *Article) Get(c *gin.Context) {
 
 	db := c.MustGet("DB").(*gorm.DB)
@@ -73,15 +71,14 @@ func (controller *Article) Get(c *gin.Context) {
 
 }
 
-// @Summary Deletes a Article
-// @Description Removes a Article from DB
-// @Accept  json
-// @Produce  json
-// @Tags Article
-// @Param  some_id path int true "ArticleID"
-// @Header 200 {string} Token "qwerty"
-// @success 200 {object} controllers.JSONResult{data=controllers.Deleted} "desc"
-// @Router /api/v1/article/{id} [delete]
+// @Summary      Deletes a Article
+// @Description  Removes a Article from DB
+// @Accept       json
+// @Produce      json
+// @Tags         Article
+// @Param        some_id  path      int                                               true  "ArticleID"
+// @success      200      {object}  controllers.JSONResult{data=controllers.Deleted}  "desc"
+// @Router       /api/v1/article/{id} [delete]
 func (controller *Article) Delete(c *gin.Context) {
 
 	db := c.MustGet("DB").(*gorm.DB)
@@ -101,16 +98,15 @@ func (controller *Article) Delete(c *gin.Context) {
 
 }
 
-// @Summary Update a Article
-// @Description updates a Article by id
-// @Accept  json
-// @Produce  json
-// @Tags Article
-// @Param  some_id path int true "ArticleID"
-// @Param message body controllers.CreateArticleInput true "Article"
-// @Header 200 {string} Token "qwerty"
-// @success 200 {object} controllers.JSONResult{data=models.Article} "desc"
-// @Router /api/v1/article/{id} [put]
+// @Summary      Update a Article
+// @Description  updates a Article by id
+// @Accept       json
+// @Produce      json
+// @Tags         Article
+// @Param        some_id  path      int                                          true  "ArticleID"
+// @Param        message  body      controllers.CreateArticleInput               true  "Article"
+// @success      200      {object}  controllers.JSONResult{data=models.Article}  "desc"
+// @Router       /api/v1/article/{id} [put]
 func (controller *Article) Update(c *gin.Context) {
 
 	db := c.MustGet("DB").(*gorm.DB)
@@ -132,16 +128,15 @@ func (controller *Article) Update(c *gin.Context) {
 
 }
 
-// @Summary Lists all Articles
-// @Description Lists all Articles
-// @Security ApiKeyAuth
-// @Accept  json
-// @Produce  json
-// @Tags Article
-// @Header 200 {string} Token "qwerty"
-// @Success 200 {string} []models.Article
-// @success 200 {object} controllers.JSONResult{data=[]models.Article} "desc"
-// @Router /api/v1/articles [get]
+// @Summary      Lists all Articles
+// @Description  Lists all Articles
+// @Security     ApiKeyAuth
+// @Accept       json
+// @Produce      json
+// @Tags         Article
+// @Success      200  {string}  []models.Article
+// @success      200  {object}  controllers.JSONResult{data=[]models.Article}  "desc"
+// @Router       /api/v1/articles [get]
 func (controller *Article) List(c *gin.Context) {
 
 	db := c.MustGet("DB").(*gorm.DB)

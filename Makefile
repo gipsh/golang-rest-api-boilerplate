@@ -15,7 +15,7 @@ LDFLAGS=-ldflags "-X=$(GIT)build.Version=$(VERSION)\
 
 
 build:
-	go build -v $(LDFLAGS)
+	go build -v $(LDFLAGS) -o test-svc
 	
 doc:
 	swag init -g app/routes.go
